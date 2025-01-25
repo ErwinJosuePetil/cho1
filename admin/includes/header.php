@@ -1,3 +1,12 @@
+<?php
+// Start session
+session_start();
+if (!isset($_SESSION['user'])) {
+    // Redirect to login page if not logged in
+    header("Location: ../index.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
