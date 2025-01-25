@@ -26,6 +26,42 @@
             <div class="sidebar-heading">
                 Interface
             </div>
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="patient.php">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Patients</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="records.php">
+                    <i class="fas fa-fw fa-folder-open"></i>
+                    <span>Records</span></a>
+                    
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="files.php">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Patients</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="patient.php">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Patients</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="charts.php">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Charts</span></a>
+            </li>
+
+
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="tables.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Tables</span></a>
+            </li>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
@@ -91,19 +127,7 @@
                 </div>
             </li>
 
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.php">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
-            </li>
 
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.php">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

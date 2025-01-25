@@ -1,0 +1,85 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPatientModal">
+    + Add Patient
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="addPatientModal" tabindex="-1" aria-labelledby="addPatientModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="addPatientModalLabel">Add Patient</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="POST" action="action.php">
+                <div class="modal-body">
+
+                    <!-- First Name -->
+                    <div class="mb-3">
+                        <label for="firstname" class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="firstname" name="firstname" required>
+                    </div>
+
+                    <!-- Middle Name -->
+                    <div class="mb-3">
+                        <label for="middlename" class="form-label">Middle Name</label>
+                        <input type="text" class="form-control" id="middlename" name="middlename">
+                    </div>
+
+                    <!-- Last Name -->
+                    <div class="mb-3">
+                        <label for="lastname" class="form-label">Last Name</label>
+                        <input type="text" class="form-control" id="lastname" name="lastname" required>
+                    </div>
+
+                    <!-- Birthdate -->
+                    <div class="mb-3">
+                        <label for="birthdate" class="form-label">Birthdate</label>
+                        <input type="date" class="form-control" id="birthdate" name="birthdate" required>
+                    </div>
+
+                    <!-- Birthplace -->
+                    <div class="mb-3">
+                        <label for="birthplace" class="form-label">Birthplace</label>
+                        <input type="text" class="form-control" id="birthplace" name="birthplace" required>
+                    </div>
+
+                    <!-- Sex -->
+                    <div class="mb-3">
+                        <label for="sex" class="form-label">Sex</label>
+                        <select class="form-control" id="sex" name="sex" required>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Admission Date -->
+                    <div class="mb-3">
+                        <label for="admission_date" class="form-label">Admission Date</label>
+                        <input type="date" class="form-control" id="admission_date" name="admission_date" required>
+                    </div>
+
+                    <!-- Discharge Date -->
+                    <div class="mb-3">
+                        <label for="discharge_date" class="form-label">Discharge Date</label>
+                        <input type="date" class="form-control" id="discharge_date" name="discharge_date">
+                    </div>
+
+                    <!-- Complications -->
+                    <div class="mb-3">
+                        <label for="complications" class="form-label">Note</label>
+                        <textarea class="form-control" id="complications" name="complications" rows="3"></textarea>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" name="add_patient">Save changes</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
