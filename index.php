@@ -43,7 +43,7 @@ include "db.php";
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
             <div class="row">
-              <div class="col-lg-6 d-flex justify-content-center align-items-center bg-login-image" style="margin-left: auto; margin-right: auto;">
+              <div class="col-lg-6 d-flex justify-content-center align-items-center bg-login-image">
                 <img src="img/DASMA.png" alt="Dasma Logo" class="img-fluid" style="max-width: 50%; height: auto;" />
               </div>
               <div class="col-lg-6">
@@ -54,48 +54,21 @@ include "db.php";
 
                   <form class="user" method="POST" action="login.php">
                     <div class="form-group">
-                      <input
-                        type="text"
-                        class="form-control form-control-user"
-                        id="exampleInputEmail"
-                        aria-describedby="emailHelp"
-                        name="username"
-                        placeholder="Enter Email Address..." />
-                        
+                      <input type="text" class="form-control form-control-user" name="username" placeholder="Enter Email Address..." />
                     </div>
                     <div class="form-group">
-                      <input
-                        type="password"
-                        class="form-control form-control-user"
-                        id="exampleInputPassword"
-                        name="password"
-                        placeholder="Password" />
+                      <input type="password" class="form-control form-control-user" name="password" placeholder="Password" />
                     </div>
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small">
-                        <input
-                          type="checkbox"
-                          class="custom-control-input"
-                          id="customCheck" />
+                        <input type="checkbox" class="custom-control-input" id="customCheck" />
                         <label class="custom-control-label" for="customCheck">Remember Me</label>
                       </div>
                     </div>
-                    <button type="submit" name="login"
-                      class="btn btn-primary btn-user btn-block">
+                    <button type="submit" name="login" class="btn btn-primary btn-user btn-block">
                       Login
-                    <button/>
+                    </button>
                     <hr />
-                    <a
-                      href="index.php"
-                      class="btn btn-google btn-user btn-block">
-                      <i class="fab fa-google fa-fw"></i> Login with Google
-                    </a>
-                    <a
-                      href="index.php"
-                      class="btn btn-facebook btn-user btn-block">
-                      <i class="fab fa-facebook-f fa-fw"></i> Login with
-                      Facebook
-                    </a>
                   </form>
                   <hr />
                   <div class="text-center">
@@ -123,5 +96,6 @@ include "db.php";
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
 </body>
+
 
 </html>
