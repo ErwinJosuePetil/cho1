@@ -1,4 +1,4 @@
-<?php 
+<?php
 // Include the database connection
 require_once 'db.php';
 require_once 'functions.php';
@@ -22,22 +22,13 @@ $mothers = get_mothers();
     </thead>
     <tbody>
         <?php
-        // Loop through the mothers data and display each mother's information
         foreach ($mothers as $mother) {
-            // Construct the full name
             $fullName = $mother['firstname'] . ' ' . $mother['middlename'] . ' ' . $mother['lastname'];
-
-            // Calculate the age based on birthdate
             $age = date_diff(date_create($mother['birthdate']), date_create('today'))->y;
-
-            // Handle the date formatting for admission and discharge dates
             $admissionDate = $mother['admission_date'] ? date("Y-m-d", strtotime($mother['admission_date'])) : 'N/A';
             $dischargeDate = $mother['discharge_date'] ? date("Y-m-d", strtotime($mother['discharge_date'])) : 'N/A';
-
-            // Get complications or set as 'None' if empty
             $complications = $mother['complications'] ? $mother['complications'] : 'None';
 
-            // Generate the row with dynamic data and ellipsis button
             echo "<tr>
                     <td>$fullName</td>
                     <td>{$mother['sex']}</td>
@@ -47,15 +38,35 @@ $mothers = get_mothers();
                     <td>$dischargeDate</td>
                     <td>$complications</td>
                     <td>
-                        <button class='ellipsis-btn' data-id='{$mother['id']}'>...</button>
-                        <div class='submenu' id='submenu-{$mother['id']}'>
-                            <ul>
-                                <li><a href='#' class='edit-action'>Edit</a></li>
-                                <li><a href='#' class='delete-action'>Delete</a></li>
-                                <li><a href='profile.php?id={$mother['id']}' class='view-action'>View</a></li>
-                            </ul>
+                        <button class='btn btn-primary btn-sm edit-btn' data-id='{$mother['id']}'>Edit</button>
+                        <button class='btn btn-danger btn-sm delete-btn' data-id='{$mother['id']}'>Delete</button>
+                        <button class='btn btn-info btn-sm view-btn' data-id='{$mother['id']}' data-toggle='modal' data-target='#viewModal-{$mother['id']}'>View</button>
+
+                    <!-- Modal -->
+                    <div class='modal fade' id='viewModal-{$mother['id']}' tabindex='-1' role='dialog' aria-labelledby='viewModalLabel-{$mother['id']}' aria-hidden='true'>
+                        <div class='modal-dialog' role='document'>
+                            <div class='modal-content'>
+                                <div class='modal-header'>
+                                    <h5 class='modal-title' id='viewModalLabel-{$mother['id']}'>Mother Details</h5>
+                                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                        <span aria-hidden='true'>&times;</span>
+                                    </button>
+                                </div>
+                                <div class='modal-body'>
+                                    <p><strong>Name:</strong> $fullName</p>
+                                    <p><strong>Sex:</strong> {$mother['sex']}</p>
+                                    <p><strong>Birthplace:</strong> {$mother['birthplace']}</p>
+                                    <p><strong>Age:</strong> $age</p>
+                                    <p><strong>Admission Date:</strong> $admissionDate</p>
+                                    <p><strong>Discharge Date:</strong> $dischargeDate</p>
+                                    <p><strong>Complications:</strong> $complications</p>
+                                </div>
+                                <div class='modal-footer'>
+                                    <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
+                                </div>
+                            </div>
                         </div>
-                        
+                    </div>
                     </td>
                 </tr>";
         }
@@ -77,12 +88,42 @@ $mothers = get_mothers();
 
 <!-- Add the following CSS for submenu positioning -->
 <style>
+    .btn {
+        padding: 5px 10px;
+        font-size: 14px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn-sm {
+        font-size: 12px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: white;
+    }
+
+    .btn-danger:hover {
+        background-color: #a71d2a;
+    }
+
     .submenu {
         display: none;
         position: absolute;
         background-color: white;
         border: 1px solid #ccc;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         z-index: 999;
         width: 120px;
     }
@@ -123,7 +164,7 @@ $mothers = get_mothers();
             e.stopPropagation();
             const submenuId = 'submenu-' + this.dataset.id;
             const submenu = document.getElementById(submenuId);
-            
+
             // Close any open submenus first
             document.querySelectorAll('.submenu').forEach(submenu => {
                 if (submenu !== document.getElementById(submenuId)) {
@@ -143,5 +184,22 @@ $mothers = get_mothers();
                 submenu.style.display = 'none';
             });
         }
+    });
+    document.querySelectorAll('.edit-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const id = this.getAttribute('data-id');
+            alert('Edit functionality for ID: ' + id);
+            // Add your edit functionality here
+        });
+    });
+
+    document.querySelectorAll('.delete-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const id = this.getAttribute('data-id');
+            if (confirm('Are you sure you want to delete ID: ' + id + '?')) {
+                // Add your delete functionality here
+                alert('Deleted ID: ' + id);
+            }
+        });
     });
 </script>
