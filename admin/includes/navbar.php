@@ -45,13 +45,13 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="medical.php">
-                    <i class="fas fa-fw fa-users"></i>
+                <i class="fa fa-user-md" aria-hidden="true"></i>
                     <span>Medical History</span></a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="labaratory.php">
-                    <i class="fas fa-fw fa-users"></i>
+                <i class="fa fa-flask" aria-hidden="true"></i>
                     <span>Lab & Diagnostic Tests</span></a>
             </li>
 
