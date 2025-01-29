@@ -35,18 +35,24 @@
             <li class="nav-item">
                 <a class="nav-link" href="records.php">
                     <i class="fas fa-fw fa-folder-open"></i>
-                    <span>Records</span></a>
+                    <span>Patient Records</span></a>
                     
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="files.php">
+                <a class="nav-link" href="pregnancy.php">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Patients</span></a>
+                    <span>Pregnancy records</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="patient.php">
+                <a class="nav-link" href="medical.php">
                     <i class="fas fa-fw fa-users"></i>
-                    <span>Patients</span></a>
+                    <span>Medical History</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="labaratory.php">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Lab & Diagnostic Tests</span></a>
             </li>
 
             <li class="nav-item">
