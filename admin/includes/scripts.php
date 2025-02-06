@@ -21,21 +21,3 @@
     <!-- Datatable -->
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://cdn.datatables.net/2.2.1/js/dataTables.js"></script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const barangaySelect = document.getElementById("barangay");
-
-            fetch("https://psgc.gitlab.io/api/cities-municipalities/042106000/barangays/")
-                .then(response => response.json())
-                .then(data => {
-                    data.forEach(barangay => {
-                        let option = document.createElement("option");
-                        option.value = barangay.name; // Use barangay code as value
-                        option.textContent = barangay.name; // Display barangay name
-                        barangaySelect.appendChild(option);
-                    });
-                })
-                .catch(error => console.error("Error fetching barangay data:", error));
-        });
-    </script>

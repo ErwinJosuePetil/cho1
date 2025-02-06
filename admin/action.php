@@ -10,15 +10,15 @@ if (isset($_POST['add_patient'])) {
     $lastname = $_POST['lastname'];
     $birthdate = $_POST['birthdate'];
     $birthplace = $_POST['birthplace'];
-    $barangay = $_POST['barangay'];
+    $sex = $_POST['sex'];
     $admission_date = $_POST['admission_date'];
     $discharge_date = $_POST['discharge_date'] ?? ''; // Optional field, may be empty
     $complications = $_POST['complications'] ?? ''; // Optional field, may be empty
 
     try {
         // Prepare the SQL query to insert data into the Mothers table
-        $sql = "INSERT INTO Mothers (firstname, middlename, lastname, birthdate, birthplace, barangay, admission_date, discharge_date, complications)
-                VALUES (:firstname, :middlename, :lastname, :birthdate, :birthplace, :barangay, :admission_date, :discharge_date, :complications)";
+        $sql = "INSERT INTO Mothers (firstname, middlename, lastname, birthdate, birthplace, sex, admission_date, discharge_date, complications)
+                VALUES (:firstname, :middlename, :lastname, :birthdate, :birthplace, :sex, :admission_date, :discharge_date, :complications)";
         
         // Prepare the statement
         $stmt = $pdo->prepare($sql);
@@ -29,7 +29,7 @@ if (isset($_POST['add_patient'])) {
         $stmt->bindParam(':lastname', $lastname);
         $stmt->bindParam(':birthdate', $birthdate);
         $stmt->bindParam(':birthplace', $birthplace);
-        $stmt->bindParam(':barangay', $barangay);
+        $stmt->bindParam(':sex', $sex);
         $stmt->bindParam(':admission_date', $admission_date);
         $stmt->bindParam(':discharge_date', $discharge_date);
         $stmt->bindParam(':complications', $complications);

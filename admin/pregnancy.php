@@ -224,7 +224,13 @@ include('db.php');
             class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
 </div>
 </div>
+<!-- /.container-fluid -->
+</div>
+  
+<!-- End of Content Wrapper -->
 
+</div>
+<!-- End of Page Wrapper -->
 
 
 <?php
