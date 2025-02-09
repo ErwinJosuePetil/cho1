@@ -40,9 +40,15 @@ $mothers = get_mothers();
                 <td><?= $dischargeDate; ?></td>
                 <td><?= $complications; ?></td>
                 <td>
-                    <button class="btn btn-primary btn-sm edit-btn" data-id="<?= $mother['id']; ?>">Edit</button>
-                    <button class="btn btn-danger btn-sm delete-btn" data-id="<?= $mother['id']; ?>">Delete</button>
-                    <button class="btn btn-info btn-sm view-btn" data-id="<?= $mother['id']; ?>" data-toggle="modal" data-target="#viewModal-<?= $mother['id']; ?>">View</button>
+                    <button class="btn btn-primary btn-sm edit-btn" data-id="<?= $mother['id']; ?>">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn btn-danger btn-sm delete-btn" data-id="<?= $mother['id']; ?>">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                    <button class="btn btn-info btn-sm view-btn" data-id="<?= $mother['id']; ?>" data-toggle="modal" data-target="#viewModal-<?= $mother['id']; ?>">
+                        <i class="fas fa-eye"></i>
+                    </button>
                 </td>
             </tr>
 
