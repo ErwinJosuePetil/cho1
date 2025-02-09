@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="updateModalLabel">Update Patient Record</h5>
+                <h5 class="modal-title" id="updateModalLabel">Update Patient Record for <span id="patient-name"></span></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
