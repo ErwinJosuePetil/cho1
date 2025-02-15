@@ -42,6 +42,7 @@ $mothers = get_mothers();
                         <button type='button' class='btn btn-warning btn-sm' data-toggle='modal' data-target='#updateModal' data-id='{$mother['id']}' data-admission_date='$admissionDate' data-discharge_date='$dischargeDate' data-complications='$complications'>
                             <i class='fas fa-edit'></i>
                         </button>
+                        
                     </td>
                 </tr>";
         }
