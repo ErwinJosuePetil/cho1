@@ -21,3 +21,19 @@
     <!-- Datatable -->
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://cdn.datatables.net/2.2.1/js/dataTables.js"></script>
+
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    fetch('fetch_dashboard_data.php')
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("totalPatients").innerText = data.total_patients;
+        document.getElementById("annualPatients").innerText = data.annual_patients;
+        document.getElementById("taskPercentage").innerText = data.task_percentage + "%";
+        document.getElementById("pendingRequests").innerText = data.pending_requests;
+        document.getElementById("taskProgress").style.width = data.task_percentage + "%";
+    })
+    .catch(error => console.error('Error fetching dashboard data:', error));
+});
+</script>
+
