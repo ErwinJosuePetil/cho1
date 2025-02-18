@@ -13,6 +13,10 @@
 
     <!-- Page level plugins -->
     <script src="vendor/chart.js/Chart.min.js"></script>
+       
+    <!-- Page level custom scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
@@ -22,6 +26,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://cdn.datatables.net/2.2.1/js/dataTables.js"></script>
 
+    <!-- Custom scripts for all pages-->
     <script>
 document.addEventListener("DOMContentLoaded", function () {
     fetch('fetch_dashboard_data.php')
@@ -37,3 +42,104 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    fetchChartData();
+});
+
+function fetchChartData() {
+    fetch('fetch_chart_data.php')
+        .then(response => response.json())
+        .then(data => {
+            updateCharts(data.patients, data.staff, data.babies);
+        })
+        .catch(error => console.error('Error fetching data:', error));
+}
+
+function updateCharts(totalPatients, totalStaff, totalBabies) {
+    // Area Chart (Patients over Time)
+    var ctx = document.getElementById("myAreaChart").getContext("2d");
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], // Example labels
+            datasets: [{
+                label: "Total Patients",
+                data: [10, 20, 30, 40, 50, 60, totalPatients], // Example data
+                backgroundColor: "rgba(78, 115, 223, 0.3)", // Lighter background color
+                borderColor: "rgba(78, 115, 223, 1)", // Consistent border color
+                borderWidth: 3, // Thicker border for better visibility
+                pointRadius: 5, // Increase point radius for visibility
+                pointBackgroundColor: "rgba(78, 115, 223, 1)", // Point color
+                fill: true,
+                lineTension: 0.3 // Smoother line
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    grid: {
+                        color: "#f1f1f1" // Lighter grid lines
+                    }
+                },
+                y: {
+                    grid: {
+                        color: "#f1f1f1"
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        font: {
+                            size: 14,
+                            family: "'Arial', sans-serif",
+                        },
+                        color: "#333" // Dark color for legend text
+                    }
+                }
+            }
+        }
+    });
+
+    // Pie Chart (Distribution of Patients, Staff, Babies)
+    var ctx2 = document.getElementById("myPieChart").getContext("2d");
+    new Chart(ctx2, {
+        type: 'doughnut',
+        data: {
+            labels: ["Patients", "Staff", "Babies"],
+            datasets: [{
+                data: [totalPatients, totalStaff, totalBabies],
+                backgroundColor: ["#4e73df", "#1cc88a", "#36b9cc"], // Updated color scheme
+                borderWidth: 2, // Slight border for each section
+                hoverOffset: 4, // Slight hover effect for better user experience
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        font: {
+                            size: 14,
+                            family: "'Arial', sans-serif",
+                        },
+                        color: "#333" // Dark color for legend text
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return tooltipItem.label + ": " + tooltipItem.raw;
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
+</script>
