@@ -143,3 +143,49 @@ function updateCharts(totalPatients, totalStaff, totalBabies) {
     });
 }
 </script>
+
+    
+<script>
+    // When the modal is about to be shown, populate the fields with the data from the button
+    $('#updateModal').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget); // Button that triggered the modal
+        var id = button.data('id');
+        var fullName = button.data('name');
+        var admissionDate = button.data('admission_date');
+        var dischargeDate = button.data('discharge_date');
+        var complications = button.data('complications');
+        var firstname = button.data('firstname');
+        var middlename = button.data('middlename');
+        var lastname = button.data('lastname');
+        var birthdate = button.data('birthdate');
+        var birthplace = button.data('birthplace');
+        var sex = button.data('sex');
+        var gestationalAge = button.data('gestational_age');
+        var dueDate = button.data('due_date');
+        var prenatalVisit = button.data('prenatal_visit');
+        var lastMenstrualPeriod = button.data('last_menstrual_period');
+        var pregnancyStatus = button.data('pregnancy_status');
+        var barangay = button.data('barangay');
+        var createdAt = button.data('created_at');
+
+        var modal = $(this);
+        modal.find('#patient-id').val(id);
+        modal.find('#patient-name').text(fullName);
+        modal.find('#admission_date').val(admissionDate);
+        modal.find('#discharge_date').val(dischargeDate);
+        modal.find('#complications').val(complications);
+        modal.find('#firstname').val(firstname);
+        modal.find('#middlename').val(middlename);
+        modal.find('#lastname').val(lastname);
+        modal.find('#birthdate').val(birthdate);
+        modal.find('#birthplace').val(birthplace);
+        modal.find('#sex').val(sex);
+        modal.find('#gestational_age').val(gestationalAge);
+        modal.find('#due_date').val(dueDate);
+        modal.find('#prenatal_visit').val(prenatalVisit);
+        modal.find('#last_menstrual_period').val(lastMenstrualPeriod);
+        modal.find('#pregnancy_status').val(pregnancyStatus);
+        modal.find('#barangay').val(barangay);
+        modal.find('#created_at').val(createdAt); // Display creation date
+    });
+</script>
