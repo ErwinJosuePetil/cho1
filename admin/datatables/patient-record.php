@@ -39,10 +39,9 @@ $mothers = get_mothers();
                     <td>$dischargeDate</td>
                     <td>$complications</td>
                     <td>
-                        <button type='button' class='btn btn-warning btn-sm' data-toggle='modal' data-target='#updateModal' data-id='{$mother['id']}' data-admission_date='$admissionDate' data-discharge_date='$dischargeDate' data-complications='$complications'>
+                        <button type='button' class='btn btn-warning btn-sm edit-btn' data-id='{$mother['id']}' data-toggle='modal' data-target='#updateModal'>
                             <i class='fas fa-edit'></i>
                         </button>
-                        
                     </td>
                 </tr>";
         }
@@ -65,18 +64,46 @@ $mothers = get_mothers();
 
 
 
-<script>
-    $('#updateModal').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget);
-        var id = button.data('id');
-        var admissionDate = button.data('admission_date');
-        var dischargeDate = button.data('discharge_date');
-        var complications = button.data('complications');
 
-        var modal = $(this);
-        modal.find('#patient-id').val(id);
-        modal.find('#admission_date').val(admissionDate);
-        modal.find('#discharge_date').val(dischargeDate);
-        modal.find('#complications').val(complications);
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('.edit-btn').click(function() {
+        var patientId = $(this).data('id');
+
+        $.ajax({
+            url: 'get_mother.php',  
+            type: 'POST',
+            data: { id: patientId },
+            success: function(response) {
+                var data = JSON.parse(response);
+
+                if (data.id) {  // If data exists, populate the form
+                    $('#patient-id').val(data.id);
+                    $('#firstname').val(data.firstname || '');
+                    $('#middlename').val(data.middlename || '');
+                    $('#lastname').val(data.lastname || '');
+                    $('#birthdate').val(data.birthdate || '');
+                    $('#birthplace').val(data.birthplace || '');
+                    $('#sex').val(data.sex || '');
+                    $('#gestational_age').val(data.gestational_age || '');
+                    $('#due_date').val(data.due_date || '');
+                    $('#prenatal_visit').val(data.prenatal_visit || '');
+                    $('#last_menstrual_period').val(data.last_menstrual_period || '');
+                    $('#pregnancy_status').val(data.pregnancy_status || '');
+                    $('#admission_date').val(data.admission_date || '');
+                    $('#discharge_date').val(data.discharge_date || '');
+                    $('#complications').val(data.complications || '');
+
+                    $('#updateModal').modal('show');  // Show modal after filling
+                } else {
+                    alert('No record found for this patient.');
+                }
+            }
+        });
     });
+});
+
 </script>
+
+

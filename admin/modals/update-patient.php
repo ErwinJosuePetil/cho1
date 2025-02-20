@@ -3,10 +3,13 @@
     <div class="modal-dialog modal-lg" role="document"> <!-- Added modal-lg class for a wider modal -->
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="updateModalLabel">Update Patient Record for <span id="patient-name"></span></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <h5 class="modal-title">
+                    Update Patient Record for <span id="patient-name"></span>
+                </h5>
+
+                <button class="btn btn-primary btn-sm edit-btn" data-id="<?= $mother['id']; ?>">
+    <i class="fas fa-edit"></i>
+</button>
             </div>
             <div class="modal-body">
                 <form action="update_record.php" method="POST">
@@ -100,4 +103,3 @@
         </div>
     </div>
 </div>
-
