@@ -1,4 +1,5 @@
 <?php
+
 require 'db.php'; // Ensure database connection
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

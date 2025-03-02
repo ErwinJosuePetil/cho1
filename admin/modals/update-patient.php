@@ -4,11 +4,12 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">
-                    Update Patient Record for <span id="patient-name"></span>
+                    Edit <span id="patient-name"></span>
                 </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="location.reload();">
                     <span aria-hidden="true">&times;</span>
                 </button>
+
             </div>
             <div class="modal-body">
                 <form action="update_record.php" method="POST">

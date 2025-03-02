@@ -30,7 +30,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="patient.php">
                     <i class="fas fa-fw fa-users"></i>
-                    <span>Patients</span></a>
+                    <span>All Patients</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="records.php">
