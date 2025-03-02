@@ -1,6 +1,8 @@
 <?php
 require_once 'db.php'; // Database connection
 
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
     $id = $_POST['id'];
     $stmt = $pdo->prepare("SELECT * FROM mothers WHERE id = ?");

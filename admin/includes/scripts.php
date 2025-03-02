@@ -183,4 +183,32 @@ function updateCharts(totalPatients, totalStaff, totalBabies) {
         });
     });
 </script>
+<script>
+$(document).ready(function() {
+    $("#updateForm").submit(function(event) {
+        event.preventDefault();  
+
+        $.ajax({
+            url: '/cho1/admin/update_patient.php', // ✅ Ensure correct path
+            type: 'POST',
+            data: $(this).serialize(),
+            success: function(response) {
+                console.log("Server response:", response);
+
+                if (response.trim() === "success") {
+                    alert("Patient updated successfully!");
+                    location.reload();  
+                } else {
+                    alert("Update failed: " + response);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("AJAX Error:", error);
+                alert("Error updating record. Check console.");
+            }
+        });
+    });
+});
+</script>
+
 
