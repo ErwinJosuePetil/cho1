@@ -39,15 +39,10 @@ $mothers = get_mothers();
                     <td>$dischargeDate</td>
                     <td>$complications</td>
                     <td>
-    <button type='button' class='btn btn-warning btn-sm edit-btn' 
-        data-id='{$mother['id']}' 
-        data-name='{$mother['firstname']} {$mother['middlename']} {$mother['lastname']}'
-        data-toggle='modal' 
-        data-target='#updateModal'>
-        <i class='fas fa-edit'></i>
-    </button>
-</td>
-
+                        <button type='button' class='btn btn-warning btn-sm edit-btn' data-id='{$mother['id']}' data-toggle='modal' data-target='#updateModal'>
+                            <i class='fas fa-edit'></i>
+                        </button>
+                    </td>
                 </tr>";
         }
         ?>
@@ -74,11 +69,7 @@ $mothers = get_mothers();
 <script>
 $(document).ready(function() {
     $('.edit-btn').click(function() {
-        var patientId = $(this).data('id');  // Get patient ID
-        var patientName = $(this).data('name'); // Get patient name
-
-        // Update the modal title with the patient's name
-        $('#patient-name').text(patientName);
+        var patientId = $(this).data('id');
 
         $.ajax({
             url: 'get_mother.php',  
@@ -87,7 +78,7 @@ $(document).ready(function() {
             success: function(response) {
                 var data = JSON.parse(response);
 
-                if (data.id) {
+                if (data.id) {  // If data exists, populate the form
                     $('#patient-id').val(data.id);
                     $('#firstname').val(data.firstname || '');
                     $('#middlename').val(data.middlename || '');
@@ -104,7 +95,7 @@ $(document).ready(function() {
                     $('#discharge_date').val(data.discharge_date || '');
                     $('#complications').val(data.complications || '');
 
-                    $('#updateModal').modal('show');  // Show modal
+                    $('#updateModal').modal('show');  // Show modal after filling
                 } else {
                     alert('No record found for this patient.');
                 }
@@ -112,7 +103,6 @@ $(document).ready(function() {
         });
     });
 });
-
 
 </script>
 

@@ -184,31 +184,25 @@ function updateCharts(totalPatients, totalStaff, totalBabies) {
     });
 </script>
 <script>
-$(document).ready(function() {
-    $("#updateForm").submit(function(event) {
-        event.preventDefault();  
+document.getElementById("updateForm").addEventListener("submit", function (e) {
+    e.preventDefault(); // Prevent default form submission
 
-        $.ajax({
-            url: '/cho1/admin/update_patient.php', // ✅ Ensure correct path
-            type: 'POST',
-            data: $(this).serialize(),
-            success: function(response) {
-                console.log("Server response:", response);
+    let formData = new FormData(this);
+    formData.append("ajax", "1"); // Mark as an AJAX request
 
-                if (response.trim() === "success") {
-                    alert("Patient updated successfully!");
-                    location.reload();  
-                } else {
-                    alert("Update failed: " + response);
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error("AJAX Error:", error);
-                alert("Error updating record. Check console.");
-            }
-        });
-    });
+    fetch("update_record.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert(data.message);
+            window.location.href = "records.php"; // Redirect after success
+        } else {
+            alert(data.message);
+        }
+    })
+    .catch(error => console.error("Error:", error));
 });
 </script>
-
-

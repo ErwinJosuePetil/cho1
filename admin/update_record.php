@@ -1,5 +1,4 @@
 <?php
-
 require 'db.php'; // Ensure database connection
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -24,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             WHERE id = :id";
 
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([
+        $success = $stmt->execute([
             ':firstname' => $_POST['firstname'],
             ':middlename' => $_POST['middlename'],
             ':lastname' => $_POST['lastname'],
@@ -41,23 +40,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ':id' => $id
         ]);
 
-        echo "<script>
-            alert('Patient record updated successfully!');
-            window.location.href='records.php';
-        </script>";
-        exit;
+        if ($success) {
+            if (isset($_POST['ajax'])) {
+                echo json_encode(["success" => true, "message" => "Patient record updated successfully!"]);
+            } else {
+                echo "<script>
+                    alert('Patient record updated successfully!');
+                    window.location.href='records.php';
+                </script>";
+            }
+        } else {
+            if (isset($_POST['ajax'])) {
+                echo json_encode(["success" => false, "message" => "Update failed."]);
+            } else {
+                echo "<script>
+                    alert('Update failed!');
+                    window.history.back();
+                </script>";
+            }
+        }
     } else {
-        echo "<script>
-            alert('Invalid ID!');
-            window.history.back();
-        </script>";
-        exit;
+        if (isset($_POST['ajax'])) {
+            echo json_encode(["success" => false, "message" => "Invalid ID!"]);
+        } else {
+            echo "<script>
+                alert('Invalid ID!');
+                window.history.back();
+            </script>";
+        }
     }
 } else {
-    echo "<script>
-        alert('Invalid request method.');
-        window.history.back();
-    </script>";
-    exit;
+    if (isset($_POST['ajax'])) {
+        echo json_encode(["success" => false, "message" => "Invalid request method."]);
+    } else {
+        echo "<script>
+            alert('Invalid request method.');
+            window.history.back();
+        </script>";
+    }
 }
+exit;
 ?>
