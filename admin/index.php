@@ -4,6 +4,7 @@ include('includes/navbar.php');
 include('db.php');
 ?>
 
+
 <!-- Content Wrapper -->
 <div id="content-wrapper" class="d-flex flex-column">
 
