@@ -10,10 +10,10 @@ if (isset($_POST['add_patient'])) {
     $lastname = $_POST['lastname'];
     $birthdate = $_POST['birthdate'];
     $birthplace = $_POST['birthplace'];
-    $sex = $_POST['sex'];
+    $sex = $_POST['sex'] ?? 'Female'; // Default to Female if not set
     $admission_date = $_POST['admission_date'];
-    $discharge_date = $_POST['discharge_date'] ?? ''; // Optional field, may be empty
-    $complications = $_POST['complications'] ?? ''; // Optional field, may be empty
+    $discharge_date = $_POST['discharge_date'] ?? ''; // Optional field
+    $complications = $_POST['complications'] ?? ''; // Optional field
 
     try {
         // Prepare the SQL query to insert data into the Mothers table

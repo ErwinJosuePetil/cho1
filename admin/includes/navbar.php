@@ -30,7 +30,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="patient.php">
                     <i class="fas fa-fw fa-users"></i>
-                    <span>Patients</span></a>
+                    <span>All Patients</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="records.php">
@@ -55,22 +55,22 @@
                     <span>Lab & Diagnostic Tests</span></a>
             </li>
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="charts.php">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Charts</span></a>
             </li>
 
 
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
+            Nav Item - Tables -->
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="tables.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Tables</span></a>
-            </li>
+            </li> -->
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
@@ -83,10 +83,10 @@
                         <a class="collapse-item" href="cards.php">Cards</a>
                     </div>
                 </div>
-            </li>
+            </li> -->
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
@@ -102,18 +102,18 @@
                         <a class="collapse-item" href="utilities-other.php">Other</a>
                     </div>
                 </div>
-            </li>
+            </li> -->
 
             <!-- Divider -->
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <div class="sidebar-heading">
+            <!-- <div class="sidebar-heading">
                 Addons
-            </div>
+            </div> -->
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
@@ -121,9 +121,9 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
+                        <h6 class="collapse-header">Login Screens:</h6> -->
                         <!-- <a class="collapse-item" href="login.php">Login</a> -->
-                        <a class="collapse-item" href="register.php">Register</a>
+                        <!-- <a class="collapse-item" href="register.php">Register</a>
                         <a class="collapse-item" href="forgot-password.php">Forgot Password</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
@@ -131,7 +131,7 @@
                         <a class="collapse-item" href="blank.php">Blank Page</a>
                     </div>
                 </div>
-            </li>
+            </li> -->
 
 
 
