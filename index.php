@@ -1,8 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['user'])) {
-  header('Location: dashboard.php');
-}
+
 
 include "db.php";
 ?>
@@ -54,7 +52,7 @@ include "db.php";
 
                   <form class="user" method="POST" action="login.php">
                     <div class="form-group">
-                      <input type="text" class="form-control form-control-user" name="username" placeholder="Enter Email Address..." />
+                      <input type="text" class="form-control form-control-user" name="username" placeholder="Username" />
                     </div>
                     <div class="form-group">
                       <input type="password" class="form-control form-control-user" name="password" placeholder="Password" />

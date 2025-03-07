@@ -18,13 +18,22 @@ if (isset($_POST['login'])) {
 
     // Check if user exists (without password verification)
     if ($user) {
-        // Valid login, set session
+        $_SERVER['id'] = $user['id'];
         $_SESSION['user'] = $user['username']; // Or use user ID for better tracking
-        header("Location: admin/index.php");
-        exit();
+        if ($user['role'] == 'admin') {
+            // Admin user
+            $_SESSION['user'] = $user['username']; // Or use user ID for better tracking
+            header("Location: admin/index.php");
+            exit();
+        } else if ($user['role'] == 'nurse') {
+            // Normal user
+            $_SESSION['user'] = $user['username']; // Or use user ID for better tracking
+            header("Location: nurse/index.php");
+            exit();
+        }
     } else {
         // Invalid credentials
         echo "<script>alert('Invalid username or password.');</script>";
+        header("Location: index.php");
     }
 }
-?>

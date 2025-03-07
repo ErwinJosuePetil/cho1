@@ -392,25 +392,25 @@ include('db.php');
                     </div>
                 </div>
             </div>
-            
 
 
 
-</div>
-<!-- End of Content Wrapper -->
 
-</div>
-<!-- End of Page Wrapper -->
+        </div>
+        <!-- End of Content Wrapper -->
 
-
-<?php
-
-include('includes/footer.php');
-include('includes/scripts.php');
-
-?>
+    </div>
+    <!-- End of Page Wrapper -->
 
 
-</body>
+    <?php
 
-</html>
+    include('includes/footer.php');
+    include('includes/scripts.php');
+
+    ?>
+
+
+    </body>
+
+    </html>

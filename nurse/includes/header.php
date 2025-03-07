@@ -1,14 +1,12 @@
 <?php
 // Start session
 session_start();
-if (!isset($_SESSION['user']) & $_SESSION['user'] != 'admin') {
+if (!isset($_SESSION['user']) & $_SESSION['user'] != 'nurse') {
     // Redirect to login page if not logged in
     header("Location: ../index.php");
     exit();
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
 
 <head>
 
@@ -36,8 +34,3 @@ if (!isset($_SESSION['user']) & $_SESSION['user'] != 'admin') {
 
 
 </head>
-
-<body id="page-top">
-
-    <!-- Page Wrapper -->
-    <div id="wrapper">
