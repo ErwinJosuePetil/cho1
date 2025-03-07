@@ -67,43 +67,42 @@ $mothers = get_mothers();
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-$(document).ready(function() {
-    $('.edit-btn').click(function() {
-        var patientId = $(this).data('id');
+    $(document).ready(function() {
+        $('.edit-btn').click(function() {
+            var patientId = $(this).data('id');
 
-        $.ajax({
-            url: 'get_mother.php',  
-            type: 'POST',
-            data: { id: patientId },
-            success: function(response) {
-                var data = JSON.parse(response);
+            $.ajax({
+                url: 'get_mother.php',
+                type: 'POST',
+                data: {
+                    id: patientId
+                },
+                success: function(response) {
+                    var data = JSON.parse(response);
 
-                if (data.id) {  // If data exists, populate the form
-                    $('#patient-id').val(data.id);
-                    $('#firstname').val(data.firstname || '');
-                    $('#middlename').val(data.middlename || '');
-                    $('#lastname').val(data.lastname || '');
-                    $('#birthdate').val(data.birthdate || '');
-                    $('#birthplace').val(data.birthplace || '');
-                    $('#sex').val(data.sex || '');
-                    $('#gestational_age').val(data.gestational_age || '');
-                    $('#due_date').val(data.due_date || '');
-                    $('#prenatal_visit').val(data.prenatal_visit || '');
-                    $('#last_menstrual_period').val(data.last_menstrual_period || '');
-                    $('#pregnancy_status').val(data.pregnancy_status || '');
-                    $('#admission_date').val(data.admission_date || '');
-                    $('#discharge_date').val(data.discharge_date || '');
-                    $('#complications').val(data.complications || '');
+                    if (data.id) { // If data exists, populate the form
+                        $('#patient-id').val(data.id);
+                        $('#firstname').val(data.firstname || '');
+                        $('#middlename').val(data.middlename || '');
+                        $('#lastname').val(data.lastname || '');
+                        $('#birthdate').val(data.birthdate || '');
+                        $('#birthplace').val(data.birthplace || '');
+                        $('#sex').val(data.sex || '');
+                        $('#gestational_age').val(data.gestational_age || '');
+                        $('#due_date').val(data.due_date || '');
+                        $('#prenatal_visit').val(data.prenatal_visit || '');
+                        $('#last_menstrual_period').val(data.last_menstrual_period || '');
+                        $('#pregnancy_status').val(data.pregnancy_status || '');
+                        $('#admission_date').val(data.admission_date || '');
+                        $('#discharge_date').val(data.discharge_date || '');
+                        $('#complications').val(data.complications || '');
 
-                    $('#updateModal').modal('show');  // Show modal after filling
-                } else {
-                    alert('No record found for this patient.');
+                        $('#updateModal').modal('show'); // Show modal after filling
+                    } else {
+                        alert('No record found for this patient.');
+                    }
                 }
-            }
+            });
         });
     });
-});
-
 </script>
-
-
