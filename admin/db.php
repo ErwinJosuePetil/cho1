@@ -1,7 +1,7 @@
 <?php
 // Database connection settings
 $host = 'localhost'; // Database host
-$db = 'cho1_db'; // Database name
+$db = 'cityhealth_db'; // Database name
 $user = 'root'; // Database username
 $pass = ''; // Database password
 $charset = 'utf8mb4';
