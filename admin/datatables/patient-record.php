@@ -42,45 +42,33 @@ $mothers = get_mothers();
                         <button type='button' class='btn btn-warning btn-sm edit-btn' data-id='{$mother['id']}' data-toggle='modal' data-target='#updateModal'>
                             <i class='fas fa-edit'></i>
                         </button>
+                        <button type='button' class='btn btn-danger btn-sm delete-btn' data-id='{$mother['id']}'>
+                            <i class='fas fa-trash-alt'></i>
+                        </button>
                     </td>
                 </tr>";
         }
         ?>
     </tbody>
-    <tfoot>
-        <tr>
-            <th>Name</th>
-            <th>Sex</th>
-            <th>Birthplace</th>
-            <th>Age</th>
-            <th>Admission Date</th>
-            <th>Discharge Date</th>
-            <th>Complications</th>
-            <th>Actions</th>
-        </tr>
-    </tfoot>
 </table>
-
-
-
-
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
         $('.edit-btn').click(function() {
             var patientId = $(this).data('id');
-
+            $('#updateModal').modal('show');
+            
             $.ajax({
                 url: 'get_mother.php',
                 type: 'POST',
-                data: {
-                    id: patientId
+                data: { id: patientId },
+                beforeSend: function() {
+                    $('#updateModal .modal-body').html('<p>Loading...</p>');
                 },
                 success: function(response) {
                     var data = JSON.parse(response);
-
-                    if (data.id) { // If data exists, populate the form
+                    if (data.id) {
                         $('#patient-id').val(data.id);
                         $('#firstname').val(data.firstname || '');
                         $('#middlename').val(data.middlename || '');
@@ -96,13 +84,33 @@ $mothers = get_mothers();
                         $('#admission_date').val(data.admission_date || '');
                         $('#discharge_date').val(data.discharge_date || '');
                         $('#complications').val(data.complications || '');
-
-                        $('#updateModal').modal('show'); // Show modal after filling
                     } else {
                         alert('No record found for this patient.');
                     }
+                },
+                error: function() {
+                    alert('Error loading patient data.');
                 }
             });
+        });
+
+        $('.delete-btn').click(function() {
+            var patientId = $(this).data('id');
+            if (confirm('Are you sure you want to delete this record?')) {
+                $.ajax({
+                    url: 'delete_mother.php',
+                    type: 'POST',
+                    data: { id: patientId },
+                    success: function(response) {
+                        if (response == 'success') {
+                            alert('Patient record deleted successfully!');
+                            location.reload();
+                        } else {
+                            alert('Failed to delete record.');
+                        }
+                    }
+                });
+            }
         });
     });
 </script>

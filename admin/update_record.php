@@ -1,17 +1,25 @@
 <?php
-require 'db.php'; // Ensure database connection
+require 'db.php'; // Database connection
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id = $_POST['id'] ?? null;
+header('Content-Type: application/json'); // Ensure JSON responses for AJAX
 
-    if (!empty($id)) {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $id = filter_var($_POST['id'] ?? null, FILTER_VALIDATE_INT);
+
+    if (!$id) {
+        echo json_encode(["success" => false, "message" => "Invalid ID!"]);
+        exit;
+    }
+
+    try {
+        // Prepare SQL statement
         $sql = "UPDATE mothers SET 
             firstname = :firstname, 
             middlename = :middlename, 
             lastname = :lastname, 
             birthdate = :birthdate, 
             birthplace = :birthplace, 
-            sex = 'Female', -- Automatically setting to Female
+            sex = 'Female', -- Automatically set to Female
             gestational_age = :gestational_age, 
             due_date = :due_date, 
             prenatal_visit = :prenatal_visit, 
@@ -24,60 +32,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $stmt = $pdo->prepare($sql);
         $success = $stmt->execute([
-            ':firstname' => $_POST['firstname'],
-            ':middlename' => $_POST['middlename'],
-            ':lastname' => $_POST['lastname'],
+            ':firstname' => trim($_POST['firstname']),
+            ':middlename' => trim($_POST['middlename']),
+            ':lastname' => trim($_POST['lastname']),
             ':birthdate' => $_POST['birthdate'],
-            ':birthplace' => $_POST['birthplace'],
-            ':gestational_age' => $_POST['gestational_age'],
+            ':birthplace' => trim($_POST['birthplace']),
+            ':gestational_age' => filter_var($_POST['gestational_age'], FILTER_SANITIZE_NUMBER_INT),
             ':due_date' => $_POST['due_date'],
-            ':prenatal_visit' => $_POST['prenatal_visit'],
+            ':prenatal_visit' => filter_var($_POST['prenatal_visit'], FILTER_SANITIZE_NUMBER_INT),
             ':last_menstrual_period' => $_POST['last_menstrual_period'],
-            ':pregnancy_status' => $_POST['pregnancy_status'],
+            ':pregnancy_status' => trim($_POST['pregnancy_status']),
             ':admission_date' => $_POST['admission_date'],
             ':discharge_date' => $_POST['discharge_date'],
-            ':complications' => $_POST['complications'],
+            ':complications' => trim($_POST['complications']),
             ':id' => $id
         ]);
 
         if ($success) {
-            if (isset($_POST['ajax'])) {
-                echo json_encode(["success" => true, "message" => "Patient record updated successfully!"]);
-            } else {
-                echo "<script>
-                    alert('Patient record updated successfully!');
-                    window.location.href='records.php';
-                </script>";
-            }
+            echo json_encode(["success" => true, "message" => "Patient record updated successfully!"]);
         } else {
-            if (isset($_POST['ajax'])) {
-                echo json_encode(["success" => false, "message" => "Update failed."]);
-            } else {
-                echo "<script>
-                    alert('Update failed!');
-                    window.history.back();
-                </script>";
-            }
+            echo json_encode(["success" => false, "message" => "Update failed."]);
         }
-    } else {
-        if (isset($_POST['ajax'])) {
-            echo json_encode(["success" => false, "message" => "Invalid ID!"]);
-        } else {
-            echo "<script>
-                alert('Invalid ID!');
-                window.history.back();
-            </script>";
-        }
+    } catch (PDOException $e) {
+        echo json_encode(["success" => false, "message" => "Database error: " . $e->getMessage()]);
     }
 } else {
-    if (isset($_POST['ajax'])) {
-        echo json_encode(["success" => false, "message" => "Invalid request method."]);
-    } else {
-        echo "<script>
-            alert('Invalid request method.');
-            window.history.back();
-        </script>";
-    }
+    echo json_encode(["success" => false, "message" => "Invalid request method."]);
 }
 exit;
 ?>

@@ -1,108 +1,91 @@
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
-                <div class="sidebar-brand-icon">
-                    <img src="dasma.png" alt="Logo" style="width: 30px;">
-                </div>
-                <div class="sidebar-brand-text mx-3">CHO1</div>
-            </a>
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+        <div class="sidebar-brand-icon">
+            <img src="Dasmariñas.png" alt="Logo" style="width: 30px;">
+        </div>
+        <div class="sidebar-brand-text mx-3">CHO1</div>
+    </a>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="index.php">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        <a class="nav-link" href="index.php">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+        </a>
+    </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+    <!-- Divider -->
+    <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">Patient Management</div>
-            
-            <li class="nav-item">
-                <a class="nav-link" href="patient.php">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>All Patients</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="records.php">
-                    <i class="fas fa-fw fa-folder-open"></i>
-                    <span>Patient Records</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="pregnancy.php">
-                    <i class="fas fa-fw fa-baby"></i>
-                    <span>Pregnancy Records</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="medical.php">
-                    <i class="fas fa-fw fa-user-md"></i>
-                    <span>Medical History</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="labaratory.php">
-                    <i class="fas fa-fw fa-flask"></i>
-                    <span>Lab & Diagnostic Tests</span>
-                </a>
-            </li>
+    <!-- Patient Management - Dropdown -->
+    <div class="sidebar-heading">Patient Management</div>
 
-            <!-- New Sections -->
-            <hr class="sidebar-divider">
-            <div class="sidebar-heading">Appointments & Services</div>
-
-            <li class="nav-item">
-                <a class="nav-link" href="appointments.php">
-                    <i class="fas fa-fw fa-calendar-check"></i>
-                    <span>Appointments</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="immunization.php">
-                    <i class="fas fa-fw fa-syringe"></i>
-                    <span>Immunization Records</span>
-                </a>
-            </li>
-
-            <!-- System Management -->
-            <hr class="sidebar-divider">
-            <div class="sidebar-heading">System Management</div>
-
-            <li class="nav-item">
-                <a class="nav-link" href="staff.php">
-                    <i class="fas fa-fw fa-user-nurse"></i>
-                    <span>Staff Management</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="reports.php">
-                    <i class="fas fa-fw fa-chart-bar"></i>
-                    <span>Reports & Analytics</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="users.php">
-                    <i class="fas fa-fw fa-user-shield"></i>
-                    <span>User & Role Management</span>
-                </a>
-            </li>
-            
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-
-            <!-- Sidebar Toggler -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#patientManagement"
+            aria-expanded="false" aria-controls="patientManagement">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Patient Management</span>
+        </a>
+        <div id="patientManagement" class="collapse" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="patient.php">All Patients</a>
+                <a class="collapse-item" href="records.php">Patient Records</a>
+                <a class="collapse-item" href="pregnancy.php">Pregnancy Records</a>
+                <a class="collapse-item" href="medical.php">Medical History</a>
+                <a class="collapse-item" href="labaratory.php">Lab & Diagnostic Tests</a>
             </div>
-        </ul>
-        <!-- End of Sidebar -->
+        </div>
+    </li>
+
+    <!-- Appointments & Services - Dropdown -->
+    <hr class="sidebar-divider">
+    <div class="sidebar-heading">Appointments & Services</div>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#appointments"
+            aria-expanded="false" aria-controls="appointments">
+            <i class="fas fa-fw fa-calendar-check"></i>
+            <span>Appointments & Services</span>
+        </a>
+        <div id="appointments" class="collapse" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="appointments.php">Appointments</a>
+                <a class="collapse-item" href="immunization.php">Immunization Records</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- System Management - Dropdown -->
+    <hr class="sidebar-divider">
+    <div class="sidebar-heading">System Management</div>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#systemManagement"
+            aria-expanded="false" aria-controls="systemManagement">
+            <i class="fas fa-fw fa-cogs"></i>
+            <span>System Management</span>
+        </a>
+        <div id="systemManagement" class="collapse" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="staff.php">Staff Management</a>
+                <a class="collapse-item" href="reports.php">Reports & Analytics</a>
+                <a class="collapse-item" href="users.php">User & Role Management</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Sidebar Toggler -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+</ul>

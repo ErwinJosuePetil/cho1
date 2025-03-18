@@ -3,16 +3,13 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title">
-    Edit <span id="patient-name"></span>
-</h5>
-<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="location.reload();">
-    <span aria-hidden="true">&times;</span>
-</button>
-
+                <h5 class="modal-title">Edit <span id="patient-name"></span></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
-                <form action="update_record.php" method="POST">
+                <form id="updateForm" action="update_record.php" method="POST">
                     <input type="hidden" name="id" id="patient-id">
                     <div class="row">
                         <div class="form-group col-md-4">
@@ -21,7 +18,7 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="middlename">Middle Name</label>
-                            <input type="text" class="form-control" name="middlename" id="middlename" required>
+                            <input type="text" class="form-control" name="middlename" id="middlename">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="lastname">Last Name</label>
@@ -35,12 +32,11 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="birthplace">Birthplace</label>
-                            <input type="text" class="form-control" name="birthplace" id="birthplace" required>
+                            <input type="text" class="form-control" name="birthplace" id="birthplace">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="sex">Sex</label>
                             <select class="form-control" name="sex" id="sex" required>
-                                <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                             </select>
                         </div>
@@ -52,7 +48,7 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="due_date">Due Date</label>
-                            <input type="date" class="form-control" name="due_date" id="due_date" required>
+                            <input type="date" class="form-control" name="due_date" id="due_date">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="prenatal_visit">Prenatal Visit</label>
@@ -88,3 +84,64 @@
         </div>
     </div>
 </div>
+
+<!-- JavaScript to Load Data into the Modal -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function () {
+    $('.edit-btn').click(function () {
+        var patientId = $(this).data('id');
+
+        $.ajax({
+            url: 'get_mother.php',
+            type: 'POST',
+            data: { id: patientId },
+            dataType: 'json',
+            success: function (data) {
+                if (data.error) {
+                    alert(data.error);
+                } else {
+                    $('#patient-id').val(data.id);
+                    $('#firstname').val(data.firstname);
+                    $('#middlename').val(data.middlename);
+                    $('#lastname').val(data.lastname);
+                    $('#birthdate').val(data.birthdate);
+                    $('#birthplace').val(data.birthplace);
+                    $('#sex').val(data.sex);
+                    $('#gestational_age').val(data.gestational_age);
+                    $('#due_date').val(data.due_date);
+                    $('#prenatal_visit').val(data.prenatal_visit);
+                    $('#last_menstrual_period').val(data.last_menstrual_period);
+                    $('#pregnancy_status').val(data.pregnancy_status);
+                    $('#admission_date').val(data.admission_date);
+                    $('#discharge_date').val(data.discharge_date);
+                    $('#complications').val(data.complications);
+
+                    $('#patient-name').text(data.firstname + ' ' + data.lastname);
+
+                    $('#updateModal').modal('show');
+                }
+            }
+        });
+    });
+
+    // AJAX Form Submission
+    $('#updateForm').submit(function (e) {
+        e.preventDefault();
+
+        $.ajax({
+            url: 'update_record.php',
+            type: 'POST',
+            data: $(this).serialize(),
+            success: function (response) {
+                alert('Patient record updated successfully!');
+                $('#updateModal').modal('hide');
+                location.reload();
+            },
+            error: function () {
+                alert('Error updating patient record.');
+            }
+        });
+    });
+});
+</script>
