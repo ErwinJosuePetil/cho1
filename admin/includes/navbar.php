@@ -2,11 +2,12 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+    <a class="sidebar-brand d-flex flex-column align-items-center justify-content-center py-4" href="index.php">
         <div class="sidebar-brand-icon">
-            <img src="Dasmariñas.png" alt="Logo" style="width: 30px;">
+            <img src="DASMA.png" alt="City Health Logo" style="width: 40
+            px; height: 40px; display: block;">
         </div>
-        <div class="sidebar-brand-text mx-3">CHO1</div>
+        <div class="sidebar-brand-text mt-2 font-weight-bold text-uppercase">City Health Office I</div>
     </a>
 
     <!-- Divider -->
