@@ -1,19 +1,17 @@
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-    <!-- Sidebar - Brand -->
+    <!-- Sidebar Brand -->
     <a class="sidebar-brand d-flex flex-column align-items-center justify-content-center py-4" href="index.php">
         <div class="sidebar-brand-icon">
-            <img src="DASMA.png" alt="City Health Logo" style="width: 40
-            px; height: 40px; display: block;">
+            <img src="DASMA.png" alt="City Health Logo" style="width: 40px; height: 40px; display: block;">
         </div>
         <div class="sidebar-brand-text mt-2 font-weight-bold text-uppercase">City Health Office I</div>
     </a>
 
-    <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
-    <!-- Nav Item - Dashboard -->
+    <!-- Dashboard -->
     <li class="nav-item active">
         <a class="nav-link" href="index.php">
             <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -21,12 +19,10 @@
         </a>
     </li>
 
-    <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <!-- Patient Management - Dropdown -->
+    <!-- Patient Management -->
     <div class="sidebar-heading">Patient Management</div>
-
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#patientManagement"
             aria-expanded="false" aria-controls="patientManagement">
@@ -44,10 +40,9 @@
         </div>
     </li>
 
-    <!-- Appointments & Services - Dropdown -->
+    <!-- Appointments & Services -->
     <hr class="sidebar-divider">
     <div class="sidebar-heading">Appointments & Services</div>
-
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#appointments"
             aria-expanded="false" aria-controls="appointments">
@@ -62,10 +57,9 @@
         </div>
     </li>
 
-    <!-- System Management - Dropdown -->
+    <!-- System Management -->
     <hr class="sidebar-divider">
     <div class="sidebar-heading">System Management</div>
-
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#systemManagement"
             aria-expanded="false" aria-controls="systemManagement">
@@ -81,8 +75,16 @@
         </div>
     </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
+    <!-- Sidebar Footer -->
+    <div class="sidebar-footer mt-auto">
+        <hr class="sidebar-divider">
+        <li class="nav-item">
+            <a class="nav-link" href="logout.php" onclick="return confirm('Are you sure you want to logout?')">
+                <i class="fas fa-fw fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </li>
+    </div>
 
     <!-- Sidebar Toggler -->
     <div class="text-center d-none d-md-inline">
