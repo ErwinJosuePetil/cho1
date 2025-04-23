@@ -55,10 +55,44 @@
                     <!-- address -->
                     <div class="row">
                         <!-- Address -->
-                        <div class="col-md-6 mb-3">
-                            <label for="address" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="address" name="address" placeholder="Enter address" required>
+                        <div class="row">
+                            <!-- Address -->
+                            <div class="col-md-6 mb-3">
+                                <label for="address" class="form-label">Address</label>
+                                <input type="text" class="form-control" id="address" name="address" placeholder="Street/Purok" required>
+                            </div>
+
+                            <!-- Contact Number -->
+                            <div class="col-md-6 mb-3">
+                                <label for="contact_number" class="form-label">Contact Number</label>
+                                <input type="text" class="form-control" id="contact_number" name="contact_number" placeholder="Enter contact number" required>
+                            </div>
                         </div>
+
+                        <!-- Static Province/City + Barangay -->
+                        <div class="row">
+                            <!-- Province (readonly) -->
+                            <div class="col-md-4 mb-3">
+                                <label for="province" class="form-label">Province</label>
+                                <input type="text" class="form-control" id="province" name="province" value="Cavite" readonly>
+                            </div>
+
+                            <!-- City (readonly) -->
+                            <div class="col-md-4 mb-3">-
+                                <label for="city" class="form-label">City/Municipality</label>
+                                <input type="text" class="form-control" id="city" name="city" value="Dasmariñas" readonly>
+                                <input type="hidden" id="city_code" value="042103000"> <!-- Dasmariñas code -->
+                            </div>
+
+                            <!-- Barangay -->
+                            <div class="col-md-4 mb-3">
+                                <label for="barangay" class="form-label">Barangay</label>
+                                <select class="form-select" id="barangay" name="barangay" required>
+                                    <option value="">Select Barangay</option>
+                                </select>
+                            </div>
+                        </div>
+
 
                         <!-- Contact Number -->
                         <div class="col-md-6 mb-3">
@@ -69,19 +103,19 @@
 
                     <!-- Admission Date -->
 
-                <div class="row">
-                    <!-- Admission Date -->
-                    <div class="col-md-6 mb-4">
-                        <label for="admission_date" class="form-label">Admission Date</label>
-                        <input type="date" class="form-control" id="admission_date" name="admission_date" required>
-                    </div>
+                    <div class="row">
+                        <!-- Admission Date -->
+                        <div class="col-md-6 mb-4">
+                            <label for="admission_date" class="form-label">Admission Date</label>
+                            <input type="date" class="form-control" id="admission_date" name="admission_date" required>
+                        </div>
 
-                    <!-- Discharge Date -->
-                    <div class="col-md-6 mb-4">
-                        <label for="discharge_date" class="form-label">Discharge Date (optional)</label>
-                        <input type="date" class="form-control" id="discharge_date" name="discharge_date">
+                        <!-- Discharge Date -->
+                        <div class="col-md-6 mb-4">
+                            <label for="discharge_date" class="form-label">Discharge Date (optional)</label>
+                            <input type="date" class="form-control" id="discharge_date" name="discharge_date">
+                        </div>
                     </div>
-                </div>
 
                     <!-- Note -->
                     <div class="mb-4">

@@ -92,23 +92,46 @@ $mothers = get_mothers();
 
 <!-- JavaScript for Edit & Delete Actions -->
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        document.querySelectorAll('.edit-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const id = this.dataset.id;
-                alert('Edit functionality for ID: ' + id);
-                // Implement edit functionality here
-            });
-        });
-
-        document.querySelectorAll('.delete-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const id = this.dataset.id;
-                if (confirm('Are you sure you want to delete ID: ' + id + '?')) {
-                    alert('Deleted ID: ' + id);
-                    // Implement delete functionality here
-                }
-            });
+document.addEventListener("DOMContentLoaded", function () {
+    // Handle edit buttons
+    document.querySelectorAll('.edit-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            const id = this.dataset.id;
+            alert('Edit functionality for ID: ' + id);
         });
     });
+
+    // Handle delete buttons
+    document.querySelectorAll('.delete-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            const id = this.dataset.id;
+            if (confirm('Are you sure you want to delete ID: ' + id + '?')) {
+                alert('Deleted ID: ' + id);
+            }
+        });
+    });
+
+    // Load barangays dynamically
+    const cityCodeInput = document.getElementById("city_code");
+    if (cityCodeInput) {
+        const cityCode = cityCodeInput.value;
+        const barangaySelect = document.getElementById("barangay");
+
+        fetch(`https://ph-locations-api.buonzz.com/api/v1/cities/${cityCode}/barangays`)
+            .then(res => res.json())
+            .then(data => {
+                data.data.forEach(barangay => {
+                    const option = document.createElement("option");
+                    option.value = barangay.name;
+                    option.text = barangay.name;
+                    barangaySelect.add(option);
+                });
+            })
+            .catch(error => {
+                console.error("Error loading barangays:", error);
+            });
+    }
+});
+
 </script>
+
